@@ -1,0 +1,332 @@
+:root{
+    --vert-foret:#263D30;
+    --sauge:#74856A;
+    --lin:#E8E7D9;
+    --creme:#F8F6F0;
+    --terracota:#C68B65;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+body{
+    margin: 0;
+    background-color: var(--creme);
+    font-family: Inter, sans-serif;
+
+}
+
+/* page de garde*/
+
+#nav {
+    position: fixed;
+    top:0;
+
+    background-color: var(--vert-foret);
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0px 2px 5px black;
+    /**border-radius: 30px;**/
+}
+
+.liste_boutons {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0;
+    margin: 10px;
+}
+
+
+.liste_boutons {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 0;
+    font-weight: bold;
+}
+
+.liste_boutons li a {
+    color: var(--creme);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.liste_boutons > li > a:link,
+.liste_boutons > li > a:visited {
+    color: var(--creme);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.liste_boutons > li > a:hover{
+    color: var(--lin);
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: var(--creme);
+}
+.grand_titre{
+   color:var(--vert-foret);
+}
+
+.accueil {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 100px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.image_main {
+    width: 70%;
+}
+
+.image_main img {
+    width: 100%;
+}
+
+.texte_main {
+    width: 50%;
+    color: var(--vert-foret);
+}
+
+.grand_titre {
+    color: var(--vert-foret);
+    font-size: 50px;
+}
+
+.texte_main p {
+    font-size: 18px;
+    color: var(--sauge);
+}
+
+.bouton {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: var(--vert-foret);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+/* presentation */
+
+.presentation {
+    padding: 50px 6%;
+    text-align: center;
+}
+
+.presentation h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.intro {
+    color: #777;
+    margin-bottom: 35px;
+}
+
+.cartes-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.carte {
+    width: 22%;
+    background-color: white;
+    padding: 25px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    text-align: left;
+}
+
+
+.icone {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.carte h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.carte p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* requetes */
+
+.requetes_main{
+    margin-top: 100px;
+}
+
+.requetes_main > .presentation{
+    font-size: 30px;
+}
+
+.bloc_sql h3 {
+    color: var(--vert-foret);
+    font-size: 25px;
+}
+
+.contenu_sql {
+    display: flex;
+    gap: 30px;
+}
+
+
+.bloc_sql {
+    background-color: var(--lin);
+    width: 85%;
+    margin: 20px auto 60px auto;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.requete {
+    width: 100%;
+}
+
+.requete pre {
+    background-color: var(--vert-foret);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    white-space: pre-wrap; /*trouvé sur internet*/
+    overflow-wrap: break-word;
+}
+
+.resultat_sql {
+    width: 100%;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.resultat_sql img {
+    width: 40%;
+    height: auto;
+}
+
+.bloc_sql a {
+    color: var(--vert-foret);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer{
+    padding: 20px 0;
+    text-align: center;
+    background-color: var(--terracota);
+    color:var(--lin)
+}
+
+
+/* pages indicateur */
+
+.titre_indicateur {
+    text-align: center;
+    margin: 100px auto 60px auto;
+    color: var(--vert-foret);
+}
+
+.titre_indicateur h1 {
+    font-size: 45px;
+}
+
+.titre_indicateur p {
+    color: var(--sauge);
+}
+
+
+/* sections */
+
+.section_indicateur {
+    background-color: var(--creme);
+    width: 85%;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.section_indicateur h2 {
+    color: var(--vert-foret);
+    font-size: 28px;
+}
+
+
+/* zones texte */
+
+.zone_texte {
+    background-color: var(--lin);
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+
+}
+
+
+/* requete sql */
+
+.section_indicateur .requete {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.section_indicateur .requete pre {
+    background-color: var(--vert-foret);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    white-space: pre-wrap; /*trouvé sur internet*/
+    overflow-wrap: break-word;
+}
+
+
+/* resultat */
+
+.section_indicateur .resultat_sql {
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.section_indicateur .resultat_sql img {
+    width: 50%;
+    height: auto;
+}
+
+.carte:hover,
+.bloc_sql:hover,
+.indicateur_sql:hover,
+.zone_texte:hover,
+.requete pre:hover{
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* telephone pour l'intro */
+
+@media screen and (max-width: 900px) {
+    .cartes-container {
+        flex-wrap: wrap;
+    }
+
+    .carte {
+        width: 40%;
+    }
+}
+
+/*imprimer */
+
+@media print {
+    body {
+        background-color: transparent;
+    }
+}

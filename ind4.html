@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Indicateur 4 - KDou</title>
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+</head>
+
+<body>
+
+<div id="bg_nav">
+    <div id="nav">
+        <ul class="liste_boutons">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="ind1.html">Indicateur 1</a></li>
+            <li><a href="ind2.html">Indicateur 2</a></li>
+            <li><a href="ind3.html">Indicateur 3</a></li>
+            <li><a href="ind4.html">Indicateur 4</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<header class="titre_indicateur">
+    <p class="categorie">INDICATEUR 04</p>
+    <h1>Nombre de produits par catégorie</h1>
+    <p>Étude de la répartition des produits dans les différentes catégories de KDou</p>
+</header>
+
+
+<section class="section_indicateur">
+
+    <h2>Énoncé et objectif de la requête</h2>
+
+    <div class="zone_texte">
+        Cette requête a pour objectif de connaître le nombre de produits référencés dans chacune des catégories de KDou. Elle permet ainsi d'obtenir une vue d'ensemble de la composition du catalogue que propose l'enseigne.
+    </div>
+
+</section>
+
+
+<section class="section_indicateur">
+
+    <h2>Intérêt de la requête</h2>
+
+    <div class="zone_texte">
+        Cet indicateur permet de visualiser la répartition du catalogue entre les différentes catégories. Il aide à repérer les catégories qui comportent beaucoup de produits et celles qui en comportent peu. Il peut aussi être utile pour éviter de commander trop de produits dans une catégorie qui en possède déjà beaucoup. Cela permettrait de réduire le nombre de livraisons et donc de faire un geste pour l'environnement !
+    </div>
+
+</section>
+
+
+<section class="section_indicateur">
+
+    <h2>Conception de la requête</h2>
+
+    <div class="zone_texte">
+        La commande SELECT précise les informations qui seront affichées dans le résultat : le nom de la catégorie (NomCateg) et le nombre de produits associés à celle-ci (NombreProduits).
+
+        La fonction Count(Produit.RefProd) permet de compter le nombre de références de produits. La jointure INNER JOIN relie les tables CATEGORIE et PRODUIT grâce à la clé primaire CodeCateg.
+
+        Ensuite, GROUP BY regroupe les produits appartenant à une même catégorie afin de pouvoir les compter. Enfin, ORDER BY classe les catégories par ordre alphabétique.
+    </div>
+
+    <div class="requete">
+        <h3>Requête SQL</h3>
+
+        <pre>
+
+SELECT Categorie.NomCateg, Count(Produit.RefProd) AS NombreProduits
+FROM Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg
+GROUP BY Categorie.NomCateg
+ORDER BY Categorie.NomCateg;
+            </pre>
+    </div>
+
+</section>
+
+
+<section class="section_indicateur">
+
+    <h2>Résultat obtenu</h2>
+
+    <div class="zone_texte">
+        On peut noter par exemple qu'il y a 10 produits laitiers, 8 pâtes et céréales..
+
+
+        <div class="resultat_sql">
+            <img src="assets/img/res_sana.png"
+                 alt="Résultat de l'indicateur 4">
+        </div>
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    Rapport Kdou - SAÉ 1.04 - CHOUAKI Sana DICKO Maouloud KHOURY Elias SAINT PAUL AMROUD Noa
+</footer>
+
+</body>
+</html>

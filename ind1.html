@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Indicateur 1 - KDou</title>
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+</head>
+
+<body>
+
+    <div id="bg_nav">
+        <div id="nav">
+            <ul class="liste_boutons">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="ind1.html">Indicateur 1</a></li>
+                <li><a href="ind2.html">Indicateur 2</a></li>
+                <li><a href="ind3.html">Indicateur 3</a></li>
+                <li><a href="ind4.html">Indicateur 4</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <header class="titre_indicateur">
+        <p class="categorie">INDICATEUR 01</p>
+        <h1>Identifier les fournisseur français</h1>
+        <p>Cette requête permet de mieux connaître les fournisseurs français de Kdou et de voir dans quelles villes ils sont installés.</p>
+    </header>
+
+
+    <section class="section_indicateur">
+
+        <h2>Énoncé et objectif de la requête</h2>
+
+        <div class="zone_texte">
+            L'objectif de cette requête est d'identifier les fournisseurs de KDou qui sont installés en France, en affichant leur nom, leur ville et leur pays.
+        </div>
+
+    </section>
+
+
+    <section class="section_indicateur">
+
+        <h2>Intérêt de la requête</h2>
+
+        <div class="zone_texte">
+            Cette requête permet à KDou de mieux connaître ses fournisseurs français et d'envisager de privilégier les approvisionnements locaux. Cela pourrait permettre de réduire les distances de transport des marchandises et ainsi de limiter les émissions de gaz à effet de serre. Cette démarche contribuerait à améliorer l'image écoresponsable de l'entreprise tout en conservant une bonne rentabilité.
+        </div>
+
+    </section>
+
+
+    <section class="section_indicateur">
+
+        <h2>Conception de la requête</h2>
+
+        <div class="zone_texte">
+            Pour réaliser cette requête SQL, j'ai utilisé une jointure entre les tables
+
+            Fournisseur et Pays afin de récupérer les informations nécessaires. J'ai ensuite ajouté une condition pour afficher uniquement les fournisseurs situés en France. Cela permet d'obtenir directement leur nom, leur ville et leur pays.
+        </div>
+
+        <div class="requete">
+            <h3>Requête SQL</h3>
+
+            <pre>
+
+    SELECT Fournisseur. Societe,
+    Fournisseur.Ville,
+    Pays.PaysFR
+    FROM Pays
+    INNER JOIN Fournisseur
+    ON Pays.NoPays = Fournisseur.NoPays
+    WHERE Pays.PaysFR = "France";
+                </pre>
+        </div>
+
+    </section>
+
+
+    <section class="section_indicateur">
+
+        <h2>Résultat obtenu</h2>
+
+        <div class="zone_texte">
+            <!-- texte si commentaire -->
+            <div class="resultat_sql">
+                <img src="assets/img/res_elias.png"
+                     alt="Résultat de l'indicateur 1">
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        Rapport Kdou - SAÉ 1.04 - CHOUAKI Sana DICKO Maouloud KHOURY Elias SAINT PAUL AMROUD Noa
+    </footer>
+
+</body>
+</html>

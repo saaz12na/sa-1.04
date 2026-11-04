@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Rapport Kdou</title>
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+</head>
+<body>
+    <div id="bg_nav">
+        <div id="nav">
+                <span>
+                    <ul class="liste_boutons">
+                        <li>
+                            <a href="ind1.html">Indicateur 1</a>
+                        </li>
+                        <li>
+                            <a href="ind2.html">Indicateur 2</a>
+                        </li>
+                        <li>
+                            <a href="ind3.html">Indicateur 3</a>
+                        </li>
+                        <li>
+                            <a href="ind4.html">Indicateur 4 </a>
+                        </li>
+                    </ul>
+                </span>
+        </div>
+    </div>
+    <main class="accueil">
+        <div class="image_main">
+            <img src="assets/img/joli.png" alt="Épicerie Kdou">
+        </div>
+
+        <div class="texte_main">
+            <h1 class="grand_titre">Rapport base de données Kdou</h1>
+            <p>
+                Découvrez notre rapport d'analyse de la base de données Kdou.
+                Nous avons étudié les données afin de mettre en évidence
+                différentes informations sur l'activité de l'entreprise.
+            </p>
+            <a class="bouton"> ↓ Découvrir le rapport</a>
+        </div>
+    </main>
+    <section class="presentation">
+        <h2>Présentation du projet</h2>
+        <p class="intro">Découvrez KDou et les objectifs de notre travail.</p>
+
+        <div class="cartes-container">
+
+            <div class="carte">
+                <div class="icone">🏪</div>
+                <h3>Qui est KDou ?</h3>
+                <p>
+                    KDou est une entreprise spécialisée dans la vente
+                    de produits alimentaires provenant de différents pays.
+                    Elle travaille avec plusieurs fournisseurs, jusqu'à l'international.
+                </p>
+            </div>
+
+            <div class="carte">
+                <div class="icone">🎯</div>
+                <h3>Les objectifs de KDou</h3>
+                <p>
+                    Proposer une grande variété de produits alimentaires tout en assurant la gestion des clients, fournisseurs et commandes. Par ailleurs, KDou aimerait renforcer son image d'entreprise éco-responsable tout en améliorant sa rentabilité.
+                </p>
+            </div>
+
+            <div class="carte">
+                <div class="icone">🔎</div>
+                <h3>Notre objectif</h3>
+                <p>
+                    Explorer et analyser la base de données KDou à l'aide du langage SQL et en extraire des informations utiles.
+                </p>
+            </div>
+
+            <div class="carte">
+                <div class="icone">💻</div>
+                <h3>Notre travail</h3>
+                <p>
+                    Réaliser des requêtes SQL et des indicateurs pour analyser l'activité de l'entreprise et pouvoir l'aider tout en présentant nos résultats.
+                </p>
+            </div>
+
+        </div>
+    </section>
+    <section class="requetes_main">
+        <h2 class="presentation">Les requêtes 2, 3, 4, 5:</h2>
+
+
+        <!-- 1ere requete -->
+        <div class="bloc_sql">
+
+            <h3> 2) Calcul du chiffre d'affaires avec les fournisseurs européens</h3>
+
+            <div class="requete">
+                <h3 class="requete_resultat">Requête SQL</h3>
+
+                <pre>
+
+SELECT Sum(DetailCommande.Quantité * Produit.CoutAchat * Categorie.CoefMarge * (1 - DetailCommande.Remise)) AS CA_UE
+FROM (Pays INNER JOIN (Fournisseur INNER JOIN (Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg) ON Fournisseur.NoFour = Produit.NoFour) ON Pays.NoPays = Fournisseur.NoPays) INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd
+WHERE Pays.UE) = "Membre";
+        </pre>
+            </div>
+
+            <div class="resultat_sql">
+                <h3>Résultat obtenu</h3>
+                <img src="assets/img/res1.png" alt="Résultat de la requête 1">
+            </div>
+
+        </div>
+
+
+        <!-- 2e requete -->
+        <div class="bloc_sql">
+
+            <h3> 3) Calcul du chiffre d'affaires annuel des desserts et boissons</h3>
+
+            <div class="requete">
+                <h3>Requête SQL</h3>
+
+                <pre>
+
+SELECT Year(Commande.DateCde) AS Annee, Sum(DetailCommande.Quantité * Produit.CoutAchat * Categorie.CoefMarge * (1 - DetailCommande.Remise)) AS CA_Annuel
+FROM (Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg) INNER JOIN (Commande INNER JOIN DetailCommande ON Commande.NoCommande = DetailCommande.NoCommande) ON Produit.RefProd = DetailCommande.RefProd
+WHERE Categorie.NomCateg IN "Desserts", "Boissons"
+GROUP BY Year(Commande.DateCde)
+ORDER BY Year(Commande.DateCde);
+        </pre>
+            </div>
+
+            <div class="resultat_sql">
+                <h3>Résultat obtenu</h3>
+                <img src="assets/img/res2.png" alt="Résultat de la requête 2">
+            </div>
+
+        </div>
+
+
+        <!-- 3e requete -->
+        <div class="bloc_sql">
+
+            <h3> 4) Identification des produits carnés non commandés</h3>
+
+            <div class="requete">
+                <h3>Requête SQL</h3>
+
+                <pre>
+
+SELECT Count(Produit.RefProd) AS Nb_Produits_Non_Commandes
+FROM Produit INNER JOIN Categorie ON Produit.CodeCateg = Categorie.CodeCateg
+WHERE Categorie.NomCateg = "Viandes" AND Produit.RefProd NOT IN (
+        SELECT DetailCommande.RefProd
+        FROM DetailCommande);
+        </pre>
+            </div>
+
+            <div class="resultat_sql">
+                <h3>Résultat obtenu</h3>
+                <img src="assets/img/res3.png" alt="Résultat de la requête 3">
+            </div>
+
+        </div>
+
+
+        <!-- 4e requete -->
+        <div class="bloc_sql">
+
+            <h3> 5) Comparaison du nombre de commandes entre clients pilotes et partenaires</h3>
+
+            <div class="requete">
+                <h3>Requête SQL</h3>
+
+                <pre>
+
+SELECT Commande.CodeCli, Count(Commande.NoCommande) AS NbCommandes
+FROM Commande
+GROUP BY Commande.CodeCli;
+
+SELECT Pilote.CodeCli AS Client_Pilote, Pilote.CodeCliPart AS Client_Partenaire, C1.NbCommandes AS Commandes_Pilote, C2.NbCommandes AS Commandes_Partenaire
+FROM(Clientele AS Pilote INNER JOIN Q_CommandesClients AS C1 ON Pilote.CodeCli = C1.CodeCli) INNER JOIN Q_CommandesClients AS C2 ON Pilote.CodeCliPart = C2.CodeCli
+WHERE C1.NbCommandes = C2.NbCommandes;
+        </pre>
+            </div>
+
+            <div class="resultat_sql">
+                <h3>Résultat obtenu</h3>
+                <img src="assets/img/res4.png" alt="Résultat de la requête 4">
+            </div>
+
+        </div>
+
+
+    </section>
+</body>
+<footer>
+    Rapport Kdou - SAÉ 1.04 - CHOUAKI Sana DICKO Maouloud KHOURY Elias SAINT PAUL AMROUD Noa
+</footer>
+</html>

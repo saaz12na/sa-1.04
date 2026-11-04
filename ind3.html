@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Indicateur 3 - KDou</title>
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+</head>
+
+<body>
+
+    <div id="bg_nav">
+        <div id="nav">
+            <ul class="liste_boutons">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="ind1.html">Indicateur 1</a></li>
+                <li><a href="ind2.html">Indicateur 2</a></li>
+                <li><a href="ind3.html">Indicateur 3</a></li>
+                <li><a href="ind4.html">Indicateur 4</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <header class="titre_indicateur">
+        <p class="categorie">INDICATEUR 03</p>
+        <h1>Produits par provenance, catégorie et coût</h1>
+        <p>Permet d'étudier la provenance des produits de KDou, en affichant leur fournisseur, leur coût d'achat et leur catégorie.</p>
+    </header>
+
+
+    <section class="section_indicateur">
+
+        <h2>Énoncé et objectif de la requête</h2>
+
+        <div class="zone_texte">
+            On souhaite obtenir la liste des produits commercialisés par KDou en affichant leur ville et leur pays de provenance (en français et en anglais), leur coût d'achat ainsi que leur catégorie. Cette requête a pour objectif de donner une vue d'ensemble des approvisionnements de l'entreprise afin de mieux comprendre la répartition géographique des fournisseurs, de comparer les produits selon leur provenance et leur coût, et éventuellement d'identifier des possibilités d'approvisionnement plus locales.
+        </div>
+
+    </section>
+
+
+    <section class="section_indicateur">
+
+        <h2>Intérêt de la requête</h2>
+
+        <div class="zone_texte">
+            Cette requête permet d'obtenir une vue d'ensemble des produits commercialisés par KDou en fonction de la provenance de leurs fournisseurs. Elle permet notamment de connaître les villes et les pays dans lesquels ils se trouvent, ainsi que les catégories et les coûts d'achat des produits. Ces informations peuvent aider KDou à mieux comprendre la répartition de ses approvisionnements et à comparer les produits selon leur provenance et leur coût. Elles peuvent également permettre d'identifier des fournisseurs géographiquement proches afin d'envisager des approvisionnements plus locaux et de limiter certaines distances de transport.
+        </div>
+
+    </section>
+
+
+    <section class="section_indicateur">
+
+        <h2>Conception de la requête</h2>
+
+        <div class="zone_texte">
+            Pour réaliser cette requête, j'ai mis en relation quatre tables à l'aide de jointures : celles des fournisseurs, des pays, des produits et des catégories. J'ai ensuite sélectionné les informations nécessaires, comme la ville du fournisseur, le nom du pays en français et en anglais, le coût d'achat du produit ainsi que sa catégorie. Enfin, j'ai organisé les résultats en effectuant un tri par ville, puis par pays et par catégorie, afin de faciliter la lecture du tableau.
+        </div>
+
+        <div class="requete">
+            <h3>Requête SQL</h3>
+
+            <pre>
+
+SELECT ville, paysfr, paysen, coutachat, nomcateg
+FROM (fournisseur AS f INNER JOIN pays AS p ON f.nopays = p.nopays)
+INNER JOIN produit AS pr ON pr.nofourn = f.nofourn
+INNER JOIN categorie AS c ON pr.codecateg = c.codecateg
+ORDER BY ville, paysfr, nomcateg;
+            </pre>
+        </div>
+
+    </section>
+
+
+    <section class="section_indicateur">
+
+        <h2>Résultat obtenu</h2>
+
+        <div class="zone_texte">
+            <!-- texte si commentaire -->
+
+            <div class="resultat_sql">
+                <img src="assets/img/res_noa.png"
+                     alt="Résultat de l'indicateur 3">
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        Rapport Kdou - SAÉ 1.04 - CHOUAKI Sana DICKO Maouloud KHOURY Elias SAINT PAUL AMROUD Noa
+    </footer>
+
+</body>
+</html>
